@@ -10,8 +10,8 @@ from time import sleep
 import numpy as np
 
 # Set target and start locations
-targetX, targetY = 4, 2#randint(0,4), randint(0,4)
-searchX, searchY = 1, 0#randint(0,4), randint(0,4)
+targetX, targetY = randint(0,4), randint(0,4)
+searchX, searchY = randint(0,4), randint(0,4)
 
 # Make sure not starting on target
 while targetX == searchX and targetY == searchY:
@@ -31,12 +31,14 @@ def distance(targetX, targetY, searchX, searchY):
 
 # Find next space
 def next(nSearchX, nSearchY):
+    # Base case for recursion
     if nSearchX == targetX and nSearchY == targetY:
         print("Solved!")
         return 0
-    else:   
-        distances = list()
-        for x in range(4):
+    else: 
+        sleep(1) # Sleep to make it not instant
+        distances = list() # Initialize list of distances
+        for x in range(4): # Search the 4 adjacent places for best move
             if x == 0 and nSearchX != 0:
                 distances.append((distance(targetX, targetY, nSearchX-1, nSearchY), nSearchX-1, nSearchY))
             elif x == 1 and nSearchY != 0:
@@ -45,21 +47,17 @@ def next(nSearchX, nSearchY):
                 distances.append((distance(targetX, targetY, nSearchX+1, nSearchY), nSearchX+1, nSearchY))
             elif x == 3 and nSearchY != 4:
                 distances.append((distance(targetX, targetY, nSearchX, nSearchY+1), nSearchX, nSearchY+1))
-        print("Distances: " + str(distances))
-        smallest = distances[0]
-        print("Smallest: " + str(smallest))
-        print(distances[1][1])
+        
+        # Find smallest distance
+        smallest = distances[0] 
         for x in range(len(distances)):
-            print(distances[x][0])
             if distances[x][0] < smallest[0]:
-                print("if")
                 smallest = distances[x]
-
+        
+        # Move to closest space
         board[smallest[2]][smallest[1]] = 1
         print("Board:")
-        print(np.matrix(board))
-        sleep(2)
-        
-        # next(smallest[1], smallest[2])
+        print(np.matrix(board)) # Make a matrix from the board to look better when printing
+        next(smallest[1], smallest[2]) # Recursive call
         
 next(searchX, searchY)
