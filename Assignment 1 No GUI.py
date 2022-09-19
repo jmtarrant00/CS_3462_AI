@@ -24,6 +24,7 @@ board = [[0 for x in range(h)] for y in range(w)]
 board[targetY][targetX] = 2 # Set target to 2
 board[searchY][searchX] = 1 # Set search to 1
 print(np.matrix(board))
+print("      ↓")
 
 # Euclidean Distance Function
 def distance(targetX, targetY, searchX, searchY):
@@ -33,7 +34,7 @@ def distance(targetX, targetY, searchX, searchY):
 def next(nSearchX, nSearchY):
     # Base case for recursion
     if nSearchX == targetX and nSearchY == targetY:
-        print("Solved!")
+        print("   Solved!")
         return 0
     else: 
         sleep(1) # Sleep to make it not instant
@@ -56,8 +57,8 @@ def next(nSearchX, nSearchY):
         
         # Move to closest space
         board[smallest[2]][smallest[1]] = 1
-        print("Board:")
         print(np.matrix(board)) # Make a matrix from the board to look better when printing
+        print("      ↓")
         next(smallest[1], smallest[2]) # Recursive call
         
 next(searchX, searchY)
