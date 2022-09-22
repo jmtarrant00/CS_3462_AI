@@ -9,9 +9,12 @@ from random import randint
 from time import sleep
 import numpy as np
 
+#get user input for board size
+w, h = int(input("What's the width? ")) - 1, int(input("What's the height? ")) - 1
+
 # Set target and start locations
-targetX, targetY = randint(0,4), randint(0,4)
-searchX, searchY = randint(0,4), randint(0,4)
+targetX, targetY = randint(0,w), randint(0,h)
+searchX, searchY = randint(0,w), randint(0,h)
 
 # Make sure not starting on target
 while targetX == searchX and targetY == searchY:
@@ -19,8 +22,7 @@ while targetX == searchX and targetY == searchY:
     print("loop")
 
 # Set up board
-w, h = 5, 5
-board = [[0 for x in range(h)] for y in range(w)]
+board = [[0 for x in range(w)] for y in range(h)]
 board[targetY][targetX] = 2 # Set target to 2
 board[searchY][searchX] = 1 # Set search to 1
 print(np.matrix(board))
@@ -37,20 +39,22 @@ def next(nSearchX, nSearchY):
         print("   Solved!")
         return 0
     else: 
-        sleep(1) # Sleep to make it not instant
+        sleep(.5) # Sleep to make it not instant
         distances = list() # Initialize list of distances
         for x in range(4): # Search the 4 adjacent places for best move
             if x == 0 and nSearchX != 0:
                 distances.append((distance(targetX, targetY, nSearchX-1, nSearchY), nSearchX-1, nSearchY))
             elif x == 1 and nSearchY != 0:
                 distances.append((distance(targetX, targetY, nSearchX, nSearchY-1), nSearchX, nSearchY-1))
-            elif x == 2 and nSearchX != 4:
+            elif x == 2 and nSearchX != (w - 1):
                 distances.append((distance(targetX, targetY, nSearchX+1, nSearchY), nSearchX+1, nSearchY))
-            elif x == 3 and nSearchY != 4:
+            elif x == 3 and nSearchY != (h - 1):
                 distances.append((distance(targetX, targetY, nSearchX, nSearchY+1), nSearchX, nSearchY+1))
         
         # Find smallest distance
+        # print(distances)
         smallest = distances[0] 
+        # print("Smallest: " + str(smallest))
         for x in range(len(distances)):
             if distances[x][0] < smallest[0]:
                 smallest = distances[x]
