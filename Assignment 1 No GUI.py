@@ -10,7 +10,7 @@ from time import sleep
 import numpy as np
 
 #get user input for board size
-w, h = int(input("What's the width? ")) - 1, int(input("What's the height? ")) - 1
+w, h = (int(input("What's the width? ")) - 1), (int(input("What's the height? ")) - 1)
 
 # Set target and start locations
 targetX, targetY = randint(0,w), randint(0,h)
@@ -22,7 +22,7 @@ while targetX == searchX and targetY == searchY:
     print("loop")
 
 # Set up board
-board = [[0 for x in range(w)] for y in range(h)]
+board = [[0 for x in range(w + 1)] for y in range(h + 1)]
 board[targetY][targetX] = 2 # Set target to 2
 board[searchY][searchX] = 1 # Set search to 1
 print(np.matrix(board))
