@@ -5,7 +5,7 @@
 
 # Library imports
 import tkinter as tk
-from tkinter import CENTER, ttk
+from tkinter import ttk
 
 # Create Root Window
 root = tk.Tk() 
