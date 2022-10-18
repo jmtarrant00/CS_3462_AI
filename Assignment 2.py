@@ -7,7 +7,7 @@
 import random
 import math as math
 import numpy as np
-import anytree 
+from anytree import node, RenderTree
 
 board = [[0,0,0],[0,0,0],[0,0,0]]
 nums = random.sample(range(1,9), 8)
@@ -25,15 +25,15 @@ def menu():
 5: Exit Program
         ''')
 
-def DFS():
+def DFS(board):
     print("Running DFS:\n")
 
 
-def UCS():
+def UCS(board):
     print("Running UCS:\n")
-def BFS():
+def BFS(board):
     print("Running BFS:\n")
-def aStar():
+def aStar(board):
     print("Running A*:\n")
 
 while run:
@@ -46,20 +46,20 @@ while run:
                 board[x][y] = nums[count]
                 count += 1
 
-    print(f"Starting Board:\n{np.matrix(board)}")
+    print(f"Starting Board:\n{np.matrix(board)}")  # type: ignore
     menu()
 
     userInput = int(input("Enter Option:"))
     if userInput == 1:
-        DFS()
+        DFS(board)
     elif userInput == 2:
-        UCS()
+        UCS(board)
     elif userInput == 3:
-        BFS()
+        BFS(board)
     elif userInput == 4:
-        aStar()
+        aStar(board)
     elif userInput == 5:
-        print("Exiting Program")
+        print("Exiting Program...")
         run = False
         break
     else:
