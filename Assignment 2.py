@@ -7,7 +7,7 @@
 import random
 import math as math
 import numpy as np
-# import anytree 
+import anytree 
 
 board = [[0,0,0],[0,0,0],[0,0,0]]
 nums = random.sample(range(1,9), 8)
