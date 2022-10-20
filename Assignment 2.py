@@ -14,6 +14,7 @@ nums = random.sample(range(0,9), 9)
 count = 0
 run = True
 userInput = 0
+zeroX, zeroY = 0,0
 
 def menu():
     print('''
@@ -25,20 +26,14 @@ def menu():
 5: Exit Program
         ''')
 
-def DFS(board):
+def DFS(board, zeroX, zeroY):
+    node(board)
     print("Running DFS:\n")
 
-    # swap = 0
-    # for x in range(3):
-    #     for y in range(3):
-    #         if 
-    #         # if board[x+1][y] == 0:
-    #         #     swap = board[x][y]
-    #         #     board[x][y] = board [x+1][y]
-    #         # elif board[x][y+1] == 0:
-    #         #     swap = board[x][y]
-    #         #     board[x][y] = board[x][y+1]
-    #         # elif board
+    swap = 0
+    for x in range(4):
+        if x == 1 and zeroX != 0:
+            swap
 
 
 def UCS(board):
@@ -55,6 +50,9 @@ while run:
             # if x == 1 and y == 1:
             #     continue
             # else:
+            if nums[count] == 0:
+                zeroX = x
+                zeroY = y
             board[x][y] = nums[count]
             count += 1
 
@@ -63,7 +61,7 @@ while run:
 
     userInput = int(input("Enter Option: "))
     if userInput == 1:
-        DFS(board)
+        DFS(board, zeroX, zeroY)
     elif userInput == 2:
         UCS(board)
     elif userInput == 3:
