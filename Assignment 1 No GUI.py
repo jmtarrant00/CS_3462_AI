@@ -39,7 +39,7 @@ def next(nSearchX, nSearchY):
         print("   Solved!")
         return 0
     else: 
-        sleep(.5) # Sleep to make it not instant
+        sleep(2) # Sleep to make it not instant
         distances = list() # Initialize list of distances
         for x in range(4): # Search the 4 adjacent places for best move
             if x == 0 and nSearchX != 0:

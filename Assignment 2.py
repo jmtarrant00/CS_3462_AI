@@ -10,7 +10,7 @@ import numpy as np
 from anytree import node, RenderTree
 
 board = [[0,0,0],[0,0,0],[0,0,0]]
-nums = random.sample(range(1,9), 8)
+nums = random.sample(range(0,9), 9)
 count = 0
 run = True
 userInput = 0
@@ -28,6 +28,18 @@ def menu():
 def DFS(board):
     print("Running DFS:\n")
 
+    # swap = 0
+    # for x in range(3):
+    #     for y in range(3):
+    #         if 
+    #         # if board[x+1][y] == 0:
+    #         #     swap = board[x][y]
+    #         #     board[x][y] = board [x+1][y]
+    #         # elif board[x][y+1] == 0:
+    #         #     swap = board[x][y]
+    #         #     board[x][y] = board[x][y+1]
+    #         # elif board
+
 
 def UCS(board):
     print("Running UCS:\n")
@@ -40,16 +52,16 @@ while run:
     count = 0
     for x in range(3):
         for y in range(3):
-            if x == 1 and y == 1:
-                continue
-            else:
-                board[x][y] = nums[count]
-                count += 1
+            # if x == 1 and y == 1:
+            #     continue
+            # else:
+            board[x][y] = nums[count]
+            count += 1
 
     print(f"Starting Board:\n{np.matrix(board)}")  # type: ignore
     menu()
 
-    userInput = int(input("Enter Option:"))
+    userInput = int(input("Enter Option: "))
     if userInput == 1:
         DFS(board)
     elif userInput == 2:
