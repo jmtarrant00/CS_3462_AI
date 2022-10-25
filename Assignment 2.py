@@ -7,6 +7,7 @@
 import random
 import math as math
 import numpy as np
+import copy
 from anytree import Node, RenderTree
 
 board = [[0,0,0],[0,0,0],[0,0,0]]
@@ -37,11 +38,20 @@ def DFS(board, zeroX, zeroY):
             board[zeroX-1][zeroY] = 0
             board[zeroX][zeroY] = swap
             zeroX -= 1
-            # print(f"DFS Board: \n{np.matrix(board)}")
-            Node(board, parent=boardTree)
+            boardx1 = copy.deepcopy(board)
+            Node(boardx1, parent=boardTree)
         elif x == 2 and zeroY != 0:
             swap = board[zeroX][zeroY-1]
-            board[zeroX][zeroY-1] = 0            
+            board[zeroX][zeroY-1] = 0
+            board[zeroX][zeroY] = swap
+            zeroY -= 1
+            Node(board, parent=boardTree)
+        elif x ==3 and zeroX != 2:
+            swap = board[zeroX+1][zeroY]
+            board[zeroX+1][zeroY] = 0
+            board[zeroX][zeroY] = swap
+            zeroX += 1
+            Node(board, parent=boardTree)
 
 
 def UCS(board):
