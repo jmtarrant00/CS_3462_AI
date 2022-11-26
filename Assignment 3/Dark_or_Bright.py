@@ -60,8 +60,8 @@ dataset = [[1,0,0,0, 0],
 
 weights = [random() for i in range(len(trainingData[0]))]
 weights[0] = 0
-print(f"Weights: {weights}")
 print("\nBefore Training:")
+print(f"Weights: {weights}\n")
 run_perceptron(dataset, weights)
 
 learnRate = 0.1
