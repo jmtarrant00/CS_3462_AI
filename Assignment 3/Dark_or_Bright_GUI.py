@@ -1,7 +1,6 @@
 import tkinter as tk
 from tkinter import CENTER, ttk
 from random import random
-from time import sleep
 
 root = tk.Tk()
 
