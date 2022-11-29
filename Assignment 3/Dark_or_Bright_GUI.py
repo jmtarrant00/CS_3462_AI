@@ -1,3 +1,9 @@
+# Name:         Jonathan Tarrant
+# Assignment:   03
+# Section:      01
+# Due Date:     09/16/2022
+
+
 import tkinter as tk
 from tkinter import CENTER, ttk
 from random import random
@@ -26,7 +32,6 @@ def run_perceptron(dataset, weights, trained):
     expected = ""
     for row in dataset:
         prediction = perceptron(row, weights)
-        print(row)
         predText = "bright" if prediction == 1 else "dark"
         expected = "bright" if row[-1] == 1 else "dark"
 
@@ -80,7 +85,7 @@ weights[0] = 0
 # run_perceptron(dataset, weights)
 
 learnRate = 0.1
-n_epoch = 8
+n_epoch = 10
 # weights = train_weights(weights, trainingData, learnRate, n_epoch, dataset)
 # print(f"Weights: {weights}")
 
