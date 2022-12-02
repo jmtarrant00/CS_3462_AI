@@ -10,7 +10,13 @@ import random
 import math as math
 import numpy as np
 import copy
-import DFS
+import anytree 
+
+class Node:
+    def __init__(self, key):
+        self.left = None
+        self.right = None
+        self.val = key
 
 #Create root window
 root = tk.Tk()
@@ -49,9 +55,11 @@ def menu():
         ''')
 
 #DFS Function
-def DFS(board, X, Y):
+def DFS(board, zeroX, zeroY):
     runningTxt.set("Running DFS")
-
+    for i in range(4):
+        if i == 0 and zeroX != 0:
+            (board[zeroX][zeroY], board[zeroX-1][zeroY]) = (board[zeroX-1][zeroY], board[zeroX][zeroY])
 
 def UCS(board):
     print("Running UCS:\n")
